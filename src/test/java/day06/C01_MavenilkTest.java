@@ -42,7 +42,7 @@ public class C01_MavenilkTest {
 //        for (WebElement w : basliklar){
 //            System.out.println(w.getText());
 //        }
-
+// lambda ile yazalım
         basliklar.forEach(t -> System.out.println(t.getText()));
 
         driver.close();

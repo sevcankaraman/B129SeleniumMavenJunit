@@ -3,6 +3,7 @@ package day09_DropDown_Alerts;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 public class C03_Alerts extends TestBase {
@@ -57,5 +58,19 @@ public class C03_Alerts extends TestBase {
         String expectedText="successfuly";
         Assert.assertFalse(actualText.contains(expectedText));
 
+    }
+
+    @Test
+    public void sendKeysAlert() throws InterruptedException {
+        driver.get("https://testcenter.techproeducation.com/index.php?page=javascript-alerts");
+//    3. butona tıklayın, uyarıdaki metin kutusuna isminizi yazin, OK butonuna
+//    tıklayın ve result mesajında isminizin görüntülendiğini doğrulayın.
+        driver.findElement(By.cssSelector("button[onclick='jsPrompt()']")).click();
+        driver.switchTo().alert().sendKeys("Sevcan");
+        driver.switchTo().alert().accept();
+        Thread.sleep(3000);
+        WebElement result = driver.findElement(By.cssSelector("p[id='result']"));
+        Assert.assertTrue(result.getText().contains("Sevcan"));
+        System.out.println(result.getText());
     }
 }

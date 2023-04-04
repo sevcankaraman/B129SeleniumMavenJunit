@@ -10,6 +10,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class TestBase {
     // TestBase class'ından obje olusturmanın önüne gecılmesı için abstract yapılabılır
@@ -83,5 +85,13 @@ public abstract class TestBase {
     public static void ddmvalue(WebElement ddm, String secenek) {
         Select select = new Select(ddm);
         select.selectByValue(secenek);
+    }
+    //SwitchTo : sayfalar arası gecıs methodu
+    //indeks 0 dan baslar
+    //girilen indeksteki window handle degerını alarak o sayfaya gecıs yapar.
+
+    public static void switchToWindow(int sayfaIndeksi){
+        List<String> windowHandleList=new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windowHandleList.get(sayfaIndeksi));
     }
 }

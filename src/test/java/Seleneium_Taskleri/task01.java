@@ -8,47 +8,41 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import utilities.TestBase;
 
 import java.time.Duration;
 import java.util.List;
 
-public class task01 {
-    static WebDriver driver;
-    static List<WebElement> urunler;
+public class task01 extends TestBase {
 
-    @BeforeClass
-    public static void setUp() throws Exception {
-        WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-    }
+    /*
+    *** Aşağıdaki Task'i Junit framework'u ile yapınız
+- ebay sayfasına gidiniz
+- electronics bölümüne tıklayınız
+- Genişliği 225 ve Uzunluğu 225 olan resimlerin hepsine tıklayalım
+- Her sayfanın sayfa başlığını yazdıralım
+- sayfayı kapatalım
+     */
 
     @Test
-    public void test01() throws InterruptedException {
-        //- ebay sayfasına gidiniz
-        driver.get("https://ebay.com");
+    public void test01(){
+        driver.get("https://www.ebay.com");
+        driver.findElement(By.xpath("(//a[text()='Electronics'])[2]")).click();
 
-        //- electronics bölümüne tıklayınız
-        driver.findElement(By.xpath("(//*[text()='Electronics'])[2]")).click();
-
-        //- Genişliği 225 ve Uzunluğu 225 olan resimlerin hepsine tıklayalım
-        //- Her sayfanın sayfa başlığını yazdıralım
-        urunler = driver.findElements(By.xpath("//*[@width='225' and @height='225']"));
-        for (int i = 0; i < urunler.size(); i++) {
-            urunler = driver.findElements(By.xpath("//*[@width='225' and @height='225']"));
-            urunler.get(i).click();
-            Thread.sleep(2000);
-            System.out.println(i+1 +". başlık : " + driver.getTitle());
-            Thread.sleep(2000);
+       List<WebElement> resimler= driver.findElements(By.xpath("//*[@width='225' and @height='225']"));
+        for (int i = 0; i < resimler.size() ; i++) {
+           resimler= driver.findElements(By.xpath("//*[@width='225' and @height='225']"));
+            resimler.get(i).click();
+            bekle(2);
+            System.out.println(i+1+".baslık"+driver.getTitle());
             driver.navigate().back();
-            Thread.sleep(2000);
+            driver.close();
+
+
+
+
         }
 
     }
 
-    @AfterClass
-    public static void afterClass() throws Exception {
-        driver.close();
-    }
 }

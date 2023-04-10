@@ -19,7 +19,7 @@ public class C02_JavaFaker  {
 
         //Lastname yazdırın:
 
-        System.out.println(faker.instance().name().lastName());
+        System.out.println(Faker.instance().name().lastName());
 
         //kullanıcı adı yazdırın
 
@@ -29,7 +29,7 @@ public class C02_JavaFaker  {
 
         System.out.println(faker.funnyName().name());
 
-        //Melek ismi yazdırın
+        //Meslek ismi yazdırın
 
         System.out.println(faker.name().title());
 

@@ -34,6 +34,7 @@ Hello World! Yazının sitede oldugunu test edin
         //Implicit wait ile test geçmedi. Explicit wait kullanacağız:
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         WebElement helloWorldText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='finish']//h4")));
+        //visibilityOfElementLocated() webelementinin görünür olmasını bekler
 
         assertTrue(helloWorldText.isDisplayed());
 

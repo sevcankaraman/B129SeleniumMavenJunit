@@ -1,4 +1,4 @@
-package day_17_ScreenShot;
+package day17_ScreenShot;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;

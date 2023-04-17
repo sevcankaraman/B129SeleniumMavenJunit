@@ -1,3 +1,5 @@
+package day14_JavaFaker_FileExist;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

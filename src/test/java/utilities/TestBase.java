@@ -24,31 +24,18 @@ public abstract class TestBase {
     //Orn: TestBase base = new TestBase()
     //Bu class'a extends ettiğimiz test classlarından ulaşabiliriz
     protected static WebDriver driver;
-    protected static ExtentReports extentReports; //Raporlamayı başlatır
-    protected static ExtentHtmlReporter extentHtmlReporter;//Raporu HTML formatında düzenler
-    protected static ExtentTest extentTest;//Tüm test aşamalarında extentTest objesi ile bilgi ekleriz
+    protected ExtentReports extentReports; //Raporlamayı başlatır
+    protected ExtentHtmlReporter extentHtmlReporter;//Raporu HTML formatında düzenler
+    protected ExtentTest extentTest;//Tüm test aşamalarında extentTest objesi ile bilgi ekleriz
     @Before
     public void setUp() throws Exception {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        //----------------------------------------------------------------------------------------
-        extentReports = new ExtentReports();
-        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String dosyaYolu = "TestOutput/reports/extentReport_"+tarih+".html";
-        extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
-        extentReports.attachReporter(extentHtmlReporter);
-        //Raporda gözükmesini istediğimiz bilgiler için
-        extentReports.setSystemInfo("Browser","Chrome");
-        extentReports.setSystemInfo("Teste","Erol");
-        extentHtmlReporter.config().setDocumentTitle("Extent Report");
-        extentHtmlReporter.config().setReportName("Smoke Test Raporu");
-        extentTest=extentReports.createTest("ExtentTest","Test Raporu");
     }
     @After
     public void tearDown() throws Exception {
-        extentReports.flush();
         bekle(3);
         //driver.quit();
     }
@@ -124,7 +111,7 @@ public abstract class TestBase {
     //Tüm Sayfa ScreenShot
     public static void tumSayfaResmi(){
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String dosyaYolu = "TestOutput/screenshot"+tarih+".png";
+        String dosyaYolu = "TestOutput/screenshot/screenshot"+tarih+".png";
         TakesScreenshot ts = (TakesScreenshot) driver;
         try {
             FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
@@ -135,11 +122,28 @@ public abstract class TestBase {
     //WebElement ScreenShot
     public static void webElementResmi(WebElement element){
         String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
-        String dosyaYolu = "TestOutput/webElementScreenshot"+tarih+".png";
+        String dosyaYolu = "TestOutput/screenshot/webElementScreenshot"+tarih+".png";
         try {
             FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void extentReport(){
+        extentReports = new ExtentReports();
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "TestOutput/reports/extentReport_"+tarih+".html";
+        extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
+        extentReports.attachReporter(extentHtmlReporter);
+        //Raporda gözükmesini istediğimiz bilgiler için
+        extentReports.setSystemInfo("Browser","Chrome");
+        extentReports.setSystemInfo("Tester","Erol");
+        extentHtmlReporter.config().setDocumentTitle("Extent Report");
+        extentHtmlReporter.config().setReportName("Smoke Test Raporu");
+    }
+    //WebTable
+    public void printData(int satir, int sutun){
+        WebElement satirSutun = driver.findElement(By.xpath("(//tbody)[1]//tr["+satir+"]//td["+sutun+"]"));
+        System.out.println(satirSutun.getText());
     }
 }

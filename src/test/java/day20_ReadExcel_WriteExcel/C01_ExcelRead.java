@@ -52,6 +52,7 @@ public class C01_ExcelRead  {
 //        Kullanılan satır sayısın bulun
         int sonKullanilanSatirIndeksi=sheet1.getLastRowNum();//son kullanılan satır ındeksını verir
         System.out.println("sonKullanilanSatirIndeksi = "+sonKullanilanSatirIndeksi);
+         
         int kullanilanToplamSatirSayisi=sheet1.getPhysicalNumberOfRows();//kullanılan toplam satır sayısını verır
         System.out.println("kullanilanToplamSatirSayisi = "+kullanilanToplamSatirSayisi);
 

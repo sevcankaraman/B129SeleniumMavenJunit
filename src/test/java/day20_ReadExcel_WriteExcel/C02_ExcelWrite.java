@@ -36,7 +36,8 @@ Bir "NÜFUS" sütunu oluşturup başkent nüfuslarını excel doyasına yazını
 
         FileOutputStream fileOutputStream = new FileOutputStream("src/test/java/resources/Capitals.xlsx");
 
-        workbook.write(fileOutputStream);//WorkBook hafızasına alınan veriyi "src/test/java/resources/Capitals.xlsx" adresindeki dosyaya write() metodu ile kaydettik.
+        workbook.write(fileOutputStream);//WorkBook hafızasına alınan veriyi "src/test/java/resources/Capitals.xlsx"
+                                        // adresindeki dosyaya write() metodu ile kaydettik.
 
     }
 }

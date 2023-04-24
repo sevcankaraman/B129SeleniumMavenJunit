@@ -39,8 +39,8 @@ public abstract class TestBase {
     @After
     public void tearDown() throws Exception {
         bekle(3);
-        extentReports.flush();
-        driver.quit();
+        //extentReports.flush();
+       driver.quit();
     }
 
     //HARD WAIT METHOD
@@ -182,4 +182,58 @@ public abstract class TestBase {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
 
     }
+
+    //Click Method
+    public void click(WebElement element) {
+        try {
+            element.click();
+        } catch (Exception e) {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].click();", element);
+        }
+    }
+    //JS Scroll
+    public void scroll(WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);",element);
+    }
+
+    // JS Sayfa Sonu Scroll
+    public void scroll(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+    }
+    // JS Sayfa Bası Scroll
+    public void scrollHome(){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,-document.body.scrollHeight)");
+    }
+    //JS SendKeys
+    public void sendKeysJS(WebElement element,String text){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='"+text+"'",element);
+    }
+
+    //JS sendAttributeValue
+    public void sendAttributeJS(WebElement element,String text){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','"+text+"')",element);
+    }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

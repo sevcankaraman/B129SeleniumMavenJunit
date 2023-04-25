@@ -20,11 +20,15 @@ public class C01_JSExecutor_Click extends TestBase {
     */
         //http://www.uitestpractice.com/Students/Form sayfasına git
         driver.get("http://www.uitestpractice.com/Students/Form ");
+
         //Formu doldur
         Faker faker = new Faker();
         WebElement firstName = driver.findElement(By.id("firstname"));
-        firstName.sendKeys(faker.name().firstName(), Keys.TAB,faker.name().lastName(),Keys.TAB,Keys.TAB,Keys.TAB,
-                Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,"Erol");
+        firstName.sendKeys(faker.name().firstName(),
+                            Keys.TAB,faker.name().lastName(),
+                            Keys.TAB,Keys.TAB,Keys.TAB,
+                            Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,"Erol");
+
         //Submit tuşuna tıkla
         /*
         org.openqa.selenium.ElementClickInterceptedException: Eğer JS kodlarıyla bir web element oluşturulmuşsa

@@ -40,7 +40,7 @@ public abstract class TestBase {
     public void tearDown() throws Exception {
         bekle(3);
         //extentReports.flush();
-       driver.quit();
+       //driver.quit();
     }
 
     //HARD WAIT METHOD

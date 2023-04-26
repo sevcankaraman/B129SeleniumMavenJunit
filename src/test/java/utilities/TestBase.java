@@ -30,6 +30,7 @@ public abstract class TestBase {
 
     @Before
     public void setUp() throws Exception {
+
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(new ChromeOptions().addArguments("--remote-allow-origins=*"));
         driver.manage().window().maximize();

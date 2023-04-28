@@ -10,7 +10,7 @@ import static org.junit.Assert.assertTrue;
 public class C04_ExplicitWait extends TestBase {
     /*
 https://the-internet.herokuapp.com/dynamic_controls sayfasına gidin
-Add tuşuna basın
+Remove tuşuna basın
 "It's gone!" yazısını doğrulayın
  */
 

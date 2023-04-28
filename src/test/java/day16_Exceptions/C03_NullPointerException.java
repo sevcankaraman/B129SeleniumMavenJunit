@@ -8,6 +8,7 @@ public class C03_NullPointerException {
     WebDriver driver;//her non primitive in default degeri nulldır
     Faker faker;
     Integer number;
+
     String name;
 
     @Test

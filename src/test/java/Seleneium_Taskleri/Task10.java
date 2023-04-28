@@ -22,7 +22,7 @@ public class Task10 extends TestBase {
         //Platforms Supported by Selenium altındaki Browsers bölümü görünene kadar sayfayı indirelim
         Actions actions = new Actions(driver);
         WebElement browser = driver.findElement(By.xpath("(//p//button)[81]"));
-        actions.moveToElement(browser).perform();
+        actions.moveToElement(browser).build().perform();
 
         //Browser bölümünden Chrome driver bölümündeki documentation linkine tıklıyalım
         browser.click();

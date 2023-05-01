@@ -25,9 +25,9 @@ public class Task12 extends TestBase {
         @Test
         public void testCalculator() throws Exception {
             driver.get("https://bonigarcia.dev/selenium-webdriver-java/slow-calculator.html");
-            Faker faker=new Faker();
-           WebElement hesapmakinesi= driver.findElement(By.xpath("//div[@class='screen']"));
+
 
 
         }
+
 }
